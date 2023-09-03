@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('communities', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->foreignId('logo_id')->nullable()->references('id')->on('files')->nullOnDelete();
+        Schema::create('friends', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('friend_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
+
+            $table->primary(['user_id', 'friend_id']);
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('communities');
+        Schema::dropIfExists('friends');
     }
 };

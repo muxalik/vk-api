@@ -6,7 +6,9 @@ namespace App\Models;
 
 use App\Enums\FamilyMemberType;
 use App\Enums\Gender;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -85,7 +87,7 @@ class User extends Authenticatable
             ->wherePivot('type', FamilyMemberType::PARENTS)
             ->orderByPivot('created_at');
     }
-    
+
     public function siblings(): BelongsToMany
     {
         return $this->familyMembers()
@@ -125,5 +127,37 @@ class User extends Authenticatable
     public function higherEducations(): HasMany
     {
         return $this->hasMany(HigherEducation::class);
+    }
+
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'followers', 'following_id', 'follower_id')
+            ->withTimestamps();
+    }
+
+    public function following(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'following_id')
+            ->withTimestamps();
+    }
+
+    public function communities(): BelongsToMany
+    {
+        return $this->belongsToMany(Community::class)
+            ->withTimestamps();
+    }
+
+    public function friends(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'friends')
+            ->where(function (Builder $query) {
+                $query->where('user_id', $this->id)
+                    ->orWhere('friend_id', $this->id);
+            });
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'nickname';
     }
 }
