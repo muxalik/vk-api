@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PersonlView>
  */
-class PersonlViewFactory extends Factory
+class PersonalViewFactory extends Factory
 {
     /**
      * Define the model's default state.

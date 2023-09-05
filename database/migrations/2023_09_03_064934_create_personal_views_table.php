@@ -16,7 +16,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personl_views', function (Blueprint $table) {
+        Schema::create('personal_views', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('political_views', PoliticalView::values())->default(PoliticalView::NONE->value);
