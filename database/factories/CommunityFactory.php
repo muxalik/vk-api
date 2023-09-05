@@ -17,7 +17,10 @@ class CommunityFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->words(mt_rand(1, 3), true),
+            'nickname' => str(fake()->words(mt_rand(1, 3), true))->snake(),
+            'description' => fake()->text(),
+            'website' => fake()->url(),
         ];
     }
 }

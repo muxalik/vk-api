@@ -32,9 +32,25 @@ class User extends Authenticatable
         'nickname',
         'birthday',
         'email',
+        'city_id',
+        'home_id',
+        'alt_phone',
+        'skype',
+        'website',
+        'user_id',
         'notification_email',
         'password',
     ];
+
+    public function home(): HasOne
+    {
+        return $this->hasOne(Place::class, 'home_id');
+    }
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

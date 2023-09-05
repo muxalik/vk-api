@@ -17,7 +17,7 @@ trait Localizable
 
     private function getLocale(): string
     {
-        $filename = str(__CLASS__)->kebab();
+        $filename = str(__CLASS__)->afterLast('\\')->kebab();
         $key = $this->value;
 
         return __("$filename.$key");
