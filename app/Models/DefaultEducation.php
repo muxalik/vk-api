@@ -10,6 +10,8 @@ class DefaultEducation extends Model
 {
     use HasFactory;
 
+    protected $table = 'default_educations';
+
     protected $fillable = [
         'city_id',
         'education_place_id',

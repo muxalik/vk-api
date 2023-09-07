@@ -19,7 +19,7 @@ class CityFactory extends Factory
     {
         return [
             'name' => fake()->city(),
-            'country_id' => Country::inRandomOrder()->value('id'),
+            'country_id' => randomOrCreate(Country::class),
         ];
     }
 }

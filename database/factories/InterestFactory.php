@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\InterestType;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,9 @@ class InterestFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'type' => InterestType::randomValue(),
+            'content' => fake()->text(120),
+            'user_id' => randomOrCreate(User::class),
         ];
     }
 }

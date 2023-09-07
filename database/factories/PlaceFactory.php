@@ -17,7 +17,11 @@ class PlaceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'city' => fake()->city(),
+            'district' => fake()->word(),
+            'street' => fake()->streetAddress(),
+            'name' => fake()->words(mt_rand(3, 5), true),
+            'house_number' => fake()->regexify('\d{1,2}[A-Za-z]'),
         ];
     }
 }

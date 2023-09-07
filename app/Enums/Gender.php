@@ -9,6 +9,7 @@ enum Gender: string
 {
     use Localizable, Enumerable;
 
+    case NONE = 'none';
     case MALE = 'male';
     case FEMALE = 'female';
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class EducationPlaceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->words(mt_rand(4, 7), true),
+            'city_id' => randomOrCreate(City::class),
         ];
     }
 }

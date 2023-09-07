@@ -26,6 +26,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'avatar_id',
         'first_name',
         'last_name',
         'gender',
@@ -37,20 +38,9 @@ class User extends Authenticatable
         'alt_phone',
         'skype',
         'website',
-        'user_id',
         'notification_email',
         'password',
     ];
-
-    public function home(): HasOne
-    {
-        return $this->hasOne(Place::class, 'home_id');
-    }
-
-    public function city(): BelongsTo
-    {
-        return $this->belongsTo(City::class);
-    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -72,6 +62,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function (self $user) {
+            if ($user->isDirty('password')) {
+                $user->attributes['password'] = bcrypt($user->password);
+            }
+        });
+    }
+
+    public function avatar(): BelongsTo
+    {
+        return $this->belongsTo(File::class);
+    }
+
+    public function home(): HasOne
+    {
+        return $this->hasOne(Place::class, 'home_id');
+    }
+
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
 
     public function profile(): HasOne
     {
@@ -175,5 +191,10 @@ class User extends Authenticatable
     public function getRouteKeyName(): string
     {
         return 'nickname';
+    }
+
+    public function getFullNameAttribute(): string 
+    {
+        return $this->first_name + ' ' + $this->last_name;
     }
 }

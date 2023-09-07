@@ -15,7 +15,7 @@ class Place extends Model
         'district',
         'street',
         'name',
-        'houst_number',
+        'house_number',
     ];
 
     public function contactInfo(): HasOne

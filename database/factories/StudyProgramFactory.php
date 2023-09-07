@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Faculty;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class StudyProgramFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->words(mt_rand(3, 5), true),
+            'faculty_id' => randomOrCreate(Faculty::class),
         ];
     }
 }

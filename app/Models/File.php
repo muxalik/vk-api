@@ -14,13 +14,8 @@ class File extends Model
         'path',
     ];
 
-    public function getFullPathAttribute(): string 
+    public function getFullPathAttribute(): string
     {
         return public_path('storage/' . $this->path . '/' . $this->name);
-    }
-
-    public function createFake(): void 
-    {
-        
     }
 }

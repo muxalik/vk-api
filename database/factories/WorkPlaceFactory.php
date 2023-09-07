@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use App\Models\Community;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,18 +20,13 @@ class WorkPlaceFactory extends Factory
     public function definition(): array
     {
         return [
-            ''
+            'community_id' => randomOrCreate(Community::class),
+            'company_name' => fake()->word(),
+            'city_id' => randomOrCreate(City::class),
+            'from_year' => fake()->year(),
+            'to_year' => fake()->year(),
+            'position' => fake()->words(mt_rand(1, 3), true),
+            'user_id' => randomOrCreate(User::class),
         ];
-    }
-
-    public function withCommunity(): static
-    {
-        $community = Community::factory()->create();
-
-        return $this->state(function (array $attributes) use ($community) {
-            return [
-                'community_id' => $community->id,
-            ];
-        });
     }
 }
