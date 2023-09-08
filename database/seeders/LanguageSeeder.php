@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Language;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class LanguageSeeder extends Seeder
 {
@@ -12,6 +15,19 @@ class LanguageSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $languages = [];
+
+        foreach (Language::values() as $i => $language) {
+            $languages[] = [
+                'id' => $i + 1,
+                'name' => $language,
+                'created_at' => now()->toDateTimeLocalString(),
+                'updated_at' => now()->toDateTimeLocalString(),
+            ];
+        }
+
+        Cache::put('languages', $languages);
+
+        DB::table('languages')->insert($languages);
     }
 }

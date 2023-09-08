@@ -7,6 +7,7 @@ use App\Enums\PersonalPriority;
 use App\Enums\PersonalView;
 use App\Enums\PoliticalView;
 use App\Enums\ReligionType;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class PersonalViewFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => randomOrCreate(User::class),
             'political_views' => PoliticalView::randomValue(),
             'religion' => ReligionType::randomValue(),
             'personal_priority' => PersonalPriority::randomValue(),

@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('communities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('nickname');
+            $table->text('description')->nullable();
+            $table->string('website')->nullable();
             $table->foreignId('logo_id')->nullable()->references('id')->on('files')->nullOnDelete();
             $table->timestamps();
         });

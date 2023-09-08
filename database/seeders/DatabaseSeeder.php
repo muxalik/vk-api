@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Cache;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,15 +16,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            PlaceSeeder::class,
+            CountrySeeder::class,
+            CitySeeder::class,
+            FileSeeder::class,
+            UserSeeder::class,
+            LanguageSeeder::class,
+            LanguageUserSeeder::class,
+            CommunitySeeder::class,
+            EducationPlaceSeeder::class,
+            FacultySeeder::class,
+            EducationPlaceFacultySeeder::class,
+            StudyProgramSeeder::class,
+            ProfileSeeder::class,
+            InterestSeeder::class,
+            DefaultEducationSeeder::class,
+            HigherEducationSeeder::class,
+            WorkPlaceSeeder::class,
+            MilitaryServiceSeeder::class,
+            PersonalViewSeeder::class,
+            CommunityUserSeeder::class,
+            FollowerSeeder::class,
+            FriendSeeder::class,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        User::factory()
-            ->withAvatar()
-            ->create();
+        Cache::flush();
     }
 }

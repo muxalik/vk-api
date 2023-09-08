@@ -21,7 +21,7 @@ class ProfileFactory extends Factory
     {
         return [
             'hometown' => fake()->city(),
-            'cover' => randomOrCreate(File::class),
+            'cover_id' => randomOrCreate(File::class),
             'brief_info' => fake()->text(30),
             'relationship' => RelationshipType::randomValue(),
             'user_id' => randomOrCreate(User::class),

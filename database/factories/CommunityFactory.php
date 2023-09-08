@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\File;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class CommunityFactory extends Factory
             'nickname' => str(fake()->words(mt_rand(1, 3), true))->snake(),
             'description' => fake()->text(),
             'website' => fake()->url(),
+            'logo_id' => randomOrCreate(File::class),
         ];
     }
 }
