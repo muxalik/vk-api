@@ -5,7 +5,7 @@ namespace App\Enums;
 use App\Traits\Enumerable;
 use App\Traits\Localizable;
 
-enum CityName: string
+enum Cities: string
 {
     use Localizable, Enumerable;
 

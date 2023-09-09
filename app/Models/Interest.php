@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\InterestType;
+use App\Enums\InterestTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,7 +18,7 @@ class Interest extends Model
     ];
 
     protected $casts = [
-        'type' => InterestType::class
+        'type' => InterestTypes::class
     ];
 
     public function user(): BelongsTo

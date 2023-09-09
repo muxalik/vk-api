@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\EducationTypes;
 use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +20,7 @@ class EducationPlaceFactory extends Factory
     {
         return [
             'name' => fake()->words(mt_rand(4, 7), true),
+            'type' => EducationTypes::randomValue(),
             'city_id' => randomOrCreate(City::class),
         ];
     }

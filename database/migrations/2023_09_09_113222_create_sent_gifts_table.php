@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('message')->nullable();
             $table->boolean('is_private');
             $table->unsignedDecimal('price');
-            $table->enum('currency', Currencies::values())->default(Currencies::Vote->value);
+            $table->enum('currency', Currencies::values())->default(Currencies::VOTE->value);
             $table->timestamps();
         });
     }

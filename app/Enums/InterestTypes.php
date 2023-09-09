@@ -5,7 +5,7 @@ namespace App\Enums;
 use App\Traits\Enumerable;
 use App\Traits\Localizable;
 
-enum InterestType: string
+enum InterestTypes: string
 {
     use Localizable, Enumerable;
 

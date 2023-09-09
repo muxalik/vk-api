@@ -4,9 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Enums\Device;
-use App\Enums\FamilyMemberType;
-use App\Enums\Gender;
+use App\Enums\Devices;
+use App\Enums\FamilyMembers;
+use App\Enums\Genders;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -64,9 +64,9 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'gender' => Gender::class,
+        'gender' => Genders::class,
         'is_online' => 'bool',
-        'device' => Device::class,
+        'device' => Devices::class,
         'last_online_at' => 'datetime',
         'birthday' => 'datetime',
         'email_verified_at' => 'datetime',
@@ -119,35 +119,35 @@ class User extends Authenticatable
     public function grandparents(): BelongsToMany
     {
         return $this->familyMembers()
-            ->wherePivot('type', FamilyMemberType::GRANDPARENTS)
+            ->wherePivot('type', FamilyMembers::GRANDPARENTS)
             ->orderByPivot('created_at');
     }
 
     public function parents(): BelongsToMany
     {
         return $this->familyMembers()
-            ->wherePivot('type', FamilyMemberType::PARENTS)
+            ->wherePivot('type', FamilyMembers::PARENTS)
             ->orderByPivot('created_at');
     }
 
     public function siblings(): BelongsToMany
     {
         return $this->familyMembers()
-            ->wherePivot('type', FamilyMemberType::SIBLINGS)
+            ->wherePivot('type', FamilyMembers::SIBLINGS)
             ->orderByPivot('created_at');
     }
 
     public function children(): BelongsToMany
     {
         return $this->familyMembers()
-            ->wherePivot('type', FamilyMemberType::CHILDREN)
+            ->wherePivot('type', FamilyMembers::CHILDREN)
             ->orderByPivot('created_at');
     }
 
     public function grandchildren(): BelongsToMany
     {
         return $this->familyMembers()
-            ->wherePivot('type', FamilyMemberType::GRANDCHILDREN)
+            ->wherePivot('type', FamilyMembers::GRANDCHILDREN)
             ->orderByPivot('created_at');
     }
 
@@ -202,6 +202,16 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(StickerPack::class)
             ->withTimestamps();
+    }
+
+    public function gifts(): HasMany
+    {
+        return $this->hasMany(SentGift::class, 'recipient_id');
+    }
+
+    public function sentGifts(): HasMany
+    {
+        return $this->hasMany(SentGift::class, 'sender_id');
     }
 
     public function getRouteKeyName(): string

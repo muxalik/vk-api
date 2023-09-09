@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Enums\ImportantQuality;
-use App\Enums\PersonalPriority;
-use App\Enums\PersonalView;
-use App\Enums\PoliticalView;
-use App\Enums\ReligionType;
+use App\Enums\ImportantQualities;
+use App\Enums\PersonalPriorities;
+use App\Enums\PersonalViews;
+use App\Enums\PoliticalViews;
+use App\Enums\Religions;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,12 +24,12 @@ class PersonalViewFactory extends Factory
     {
         return [
             'user_id' => randomOrCreate(User::class),
-            'political_views' => PoliticalView::randomValue(),
-            'religion' => ReligionType::randomValue(),
-            'personal_priority' => PersonalPriority::randomValue(),
-            'important_in_others' => ImportantQuality::randomValue(),
-            'smoking' => PersonalView::randomValue(),
-            'alcohol' => PersonalView::randomValue(),
+            'political_views' => PoliticalViews::randomValue(),
+            'religion' => Religions::randomValue(),
+            'personal_priority' => PersonalPriorities::randomValue(),
+            'important_in_others' => ImportantQualities::randomValue(),
+            'smoking' => PersonalViews::randomValue(),
+            'alcohol' => PersonalViews::randomValue(),
         ];
     }
 }

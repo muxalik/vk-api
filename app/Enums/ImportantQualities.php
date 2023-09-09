@@ -5,7 +5,7 @@ namespace App\Enums;
 use App\Traits\Enumerable;
 use App\Traits\Localizable;
 
-enum ImportantQuality: string
+enum ImportantQualities: string
 {
     use Localizable, Enumerable;
 

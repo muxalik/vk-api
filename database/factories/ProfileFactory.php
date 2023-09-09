@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\RelationshipType;
+use App\Enums\Relationships;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,7 +23,7 @@ class ProfileFactory extends Factory
             'hometown' => fake()->city(),
             'cover_id' => randomOrCreate(File::class),
             'brief_info' => fake()->text(30),
-            'relationship' => RelationshipType::randomValue(),
+            'relationship' => Relationships::randomValue(),
             'user_id' => randomOrCreate(User::class),
         ];
     }

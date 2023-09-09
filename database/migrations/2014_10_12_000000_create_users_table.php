@@ -1,7 +1,7 @@
 <?php
 
-use App\Enums\Device;
-use App\Enums\Gender;
+use App\Enums\Devices;
+use App\Enums\Genders;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,11 +18,11 @@ return new class extends Migration
             $table->foreignId('avatar_id')->nullable()->references('id')->on('files')->nullOnDelete();
             $table->string('first_name');
             $table->string('last_name');
-            $table->enum('gender', Gender::values())->default(Gender::NONE->value);
+            $table->enum('gender', Genders::values())->default(Genders::NONE->value);
             $table->string('nickname')->unique();
             $table->string('status')->nullable();
             $table->boolean('is_online');
-            $table->enum('device', Device::values());
+            $table->enum('device', Devices::values());
             $table->timestamp('last_online_at')->nullable();
             $table->timestamp('birthday')->nullable();
             $table->string('email')->unique();

@@ -5,10 +5,10 @@ namespace App\Enums;
 use App\Traits\Enumerable;
 use App\Traits\Localizable;
 
-enum Device: string 
+enum Languages: string
 {
     use Localizable, Enumerable;
-    
-    case Computer = 'computer';
-    case Mobile = 'mobile';
+
+    case ENGLISH = 'english';
+    case RUSSIAN = 'russian';
 }

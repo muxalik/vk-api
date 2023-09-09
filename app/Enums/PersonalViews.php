@@ -5,7 +5,7 @@ namespace App\Enums;
 use App\Traits\Enumerable;
 use App\Traits\Localizable;
 
-enum PersonalView: string
+enum PersonalViews: string
 {
     use Localizable, Enumerable;
 

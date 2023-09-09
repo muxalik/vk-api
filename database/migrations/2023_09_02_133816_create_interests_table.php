@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\InterestType;
+use App\Enums\InterestTypes;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('interests', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', InterestType::values());
+            $table->enum('type', InterestTypes::values());
             $table->text('content')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

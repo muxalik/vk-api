@@ -5,7 +5,7 @@ namespace App\Enums;
 use App\Traits\Enumerable;
 use App\Traits\Localizable;
 
-enum PoliticalView: string
+enum PoliticalViews: string
 {
     use Localizable, Enumerable;
 

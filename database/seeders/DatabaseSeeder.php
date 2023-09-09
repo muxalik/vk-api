@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\City;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
 
@@ -39,6 +37,11 @@ class DatabaseSeeder extends Seeder
             CommunityUserSeeder::class,
             FollowerSeeder::class,
             FriendSeeder::class,
+            GiftSeeder::class,
+            StickerPackSeeder::class,
+            StickerSeeder::class,
+            StickerPackUserSeeder::class,
+            SentGiftSeeder::class,
         ]);
 
         Cache::flush();

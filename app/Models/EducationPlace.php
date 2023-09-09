@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\EducationTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,7 +14,12 @@ class EducationPlace extends Model
 
     protected $fillable = [
         'name',
+        'type',
         'city_id',
+    ];
+
+    protected $casts = [
+        'type' => EducationTypes::class,
     ];
 
     public function city(): BelongsTo

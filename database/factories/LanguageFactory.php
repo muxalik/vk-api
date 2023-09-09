@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enums\Language;
+use App\Enums\Languages;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class LanguageFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => Language::randomValue(),
+            'name' => Languages::randomValue(),
         ];
     }
 }

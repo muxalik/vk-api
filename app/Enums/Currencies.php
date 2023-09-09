@@ -9,6 +9,6 @@ enum Currencies: string
 {
     use Localizable, Enumerable;
 
-    case Vote = 'vote';
+    case VOTE = 'vote';
     case RUB = 'RUB';
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\File;
+use App\Models\StickerPack;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,8 @@ class StickerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'image_id' => randomOrCreate(File::class),
+            'sticker_pack_id' => randomOrCreate(StickerPack::class),
         ];
     }
 }

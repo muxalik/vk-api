@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\RelationshipType;
+use App\Enums\Relationships;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('hometown')->nullable();
             $table->foreignId('cover_id')->nullable()->references('id')->on('files')->nullOnDelete();
             $table->string('brief_info')->nullable();
-            $table->enum('relationship', RelationshipType::values())->default(RelationshipType::NONE->value);
+            $table->enum('relationship', Relationships::values())->default(Relationships::NONE->value);
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

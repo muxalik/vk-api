@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ImportantQuality;
-use App\Enums\PersonalPriority;
-use App\Enums\PersonalView;
-use App\Enums\PoliticalView;
-use App\Enums\ReligionType;
+use App\Enums\ImportantQualities;
+use App\Enums\PersonalPriorities;
+use App\Enums\PersonalViews;
+use App\Enums\PoliticalViews;
+use App\Enums\Religions;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
@@ -26,12 +26,12 @@ class PersonalViewSeeder extends Seeder
             $personalViews[] = [
                 'id' => $i + 1,
                 'user_id' => fake()->randomElement($users)['id'],
-                'political_views' => PoliticalView::randomValue(),
-                'religion' => ReligionType::randomValue(),
-                'personal_priority' => PersonalPriority::randomValue(),
-                'important_in_others' => ImportantQuality::randomValue(),
-                'smoking' => PersonalView::randomValue(),
-                'alcohol' => PersonalView::randomValue(),
+                'political_views' => PoliticalViews::randomValue(),
+                'religion' => Religions::randomValue(),
+                'personal_priority' => PersonalPriorities::randomValue(),
+                'important_in_others' => ImportantQualities::randomValue(),
+                'smoking' => PersonalViews::randomValue(),
+                'alcohol' => PersonalViews::randomValue(),
                 'created_at' => now()->toDateTimeLocalString(),
                 'updated_at' => now()->toDateTimeLocalString(),
             ];

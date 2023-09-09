@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Enums\Device;
-use App\Enums\Gender;
+use App\Enums\Devices;
+use App\Enums\Genders;
 use App\Models\City;
 use App\Models\Place;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,11 +26,11 @@ class UserFactory extends Factory
         return [
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
-            'gender' => Gender::randomValue(),
+            'gender' => Genders::randomValue(),
             'nickname' => fake()->userName(),
             'status' => fake()->words(mt_rand(3, 10), true), 
             'is_online' => $is_online,
-            'device' => Device::randomValue(),
+            'device' => Devices::randomValue(),
             'last_online_at' => $is_online ? null : fake()->dateTime(),
             'birthday' => fake()->dateTime(),
             'email' => fake()->unique()->safeEmail(),

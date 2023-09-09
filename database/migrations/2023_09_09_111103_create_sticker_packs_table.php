@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('image_id')->references('id')->on('files')->cascadeOnDelete();
             $table->unsignedDecimal('price');
-            $table->enum('currency', Currencies::values())->default(Currencies::Vote->value);
+            $table->enum('currency', Currencies::values())->default(Currencies::VOTE->value);
             $table->json('condition')->nullable();
             $table->timestamps();
         });

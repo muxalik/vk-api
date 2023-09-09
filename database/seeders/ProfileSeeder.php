@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\RelationshipType;
+use App\Enums\Relationships;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
@@ -25,7 +25,7 @@ class ProfileSeeder extends Seeder
                 'hometown' => fake()->city(),
                 'cover_id' => fake()->randomElement($files)['id'],
                 'brief_info' => fake()->text(30),
-                'relationship' => RelationshipType::randomValue(),
+                'relationship' => Relationships::randomValue(),
                 'user_id' => fake()->randomElement($users)['id'],
                 'created_at' => now()->toDateTimeLocalString(),
                 'updated_at' => now()->toDateTimeLocalString(),

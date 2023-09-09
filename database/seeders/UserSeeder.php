@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Enums\Device;
-use App\Enums\Gender;
+use App\Enums\Devices;
+use App\Enums\Genders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
@@ -28,10 +28,10 @@ class UserSeeder extends Seeder
                 'id' => $i + 1,
                 'first_name' => fake()->firstName(),
                 'last_name' => fake()->lastName(),
-                'gender' => Gender::randomValue(),
+                'gender' => Genders::randomValue(),
                 'status' => fake()->words(mt_rand(3, 10), true),
                 'is_online' => $is_online,
-                'device' => Device::randomValue(),
+                'device' => Devices::randomValue(),
                 'last_online_at' => $is_online ? null : fake()->dateTime(),
                 'nickname' => fake()->userName(),
                 'birthday' => fake()->dateTime(),

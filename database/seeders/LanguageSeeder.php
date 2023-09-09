@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\Language;
+use App\Enums\Languages;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
@@ -17,7 +17,7 @@ class LanguageSeeder extends Seeder
     {
         $languages = [];
 
-        foreach (Language::values() as $i => $language) {
+        foreach (Languages::values() as $i => $language) {
             $languages[] = [
                 'id' => $i + 1,
                 'name' => $language,

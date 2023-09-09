@@ -5,7 +5,7 @@ namespace App\Enums;
 use App\Traits\Enumerable;
 use App\Traits\Localizable;
 
-enum PersonalPriority: string
+enum PersonalPriorities: string
 {
     use Localizable, Enumerable;
 
@@ -17,5 +17,5 @@ enum PersonalPriority: string
     case IMPROVING_THE_WORLD = 'improving_the_world';
     case PERSONAL_DEVELOPMENT = 'personal_development';
     case BEAUTY_AND_ART = 'beauty_and_art';
-    case FAME_AND_INCFLUENCE = 'fame_and_incfluence';
+    case FAME_AND_INFLUENCE = 'fame_and_influence';
 }
