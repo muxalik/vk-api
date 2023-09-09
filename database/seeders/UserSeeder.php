@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         $users = [];
 
         for ($i = 0; $i < 10; $i++) {
-            $online = fake()->boolean();
+            $is_online = fake()->boolean();
 
             $users[] = [
                 'id' => $i + 1,
@@ -30,9 +30,9 @@ class UserSeeder extends Seeder
                 'last_name' => fake()->lastName(),
                 'gender' => Gender::randomValue(),
                 'status' => fake()->words(mt_rand(3, 10), true),
-                'online' => $online,
+                'is_online' => $is_online,
                 'device' => Device::randomValue(),
-                'last_online_at' => $online ? null : fake()->dateTime(),
+                'last_online_at' => $is_online ? null : fake()->dateTime(),
                 'nickname' => fake()->userName(),
                 'birthday' => fake()->dateTime(),
                 'email' => fake()->unique()->safeEmail(),

@@ -21,7 +21,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $online = fake()->boolean();
+        $is_online = fake()->boolean();
 
         return [
             'first_name' => fake()->firstName(),
@@ -29,9 +29,9 @@ class UserFactory extends Factory
             'gender' => Gender::randomValue(),
             'nickname' => fake()->userName(),
             'status' => fake()->words(mt_rand(3, 10), true), 
-            'online' => $online,
+            'is_online' => $is_online,
             'device' => Device::randomValue(),
-            'last_online_at' => $online ? null : fake()->dateTime(),
+            'last_online_at' => $is_online ? null : fake()->dateTime(),
             'birthday' => fake()->dateTime(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

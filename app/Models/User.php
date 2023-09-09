@@ -34,7 +34,7 @@ class User extends Authenticatable
         'gender',
         'nickname',
         'status',
-        'online',
+        'is_online',
         'device',
         'last_online_at',
         'birthday',
@@ -65,7 +65,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'gender' => Gender::class,
-        'online' => 'bool',
+        'is_online' => 'bool',
         'device' => Device::class,
         'last_online_at' => 'datetime',
         'birthday' => 'datetime',
@@ -198,12 +198,18 @@ class User extends Authenticatable
             });
     }
 
+    public function stickerPacks(): BelongsToMany
+    {
+        return $this->belongsToMany(StickerPack::class)
+            ->withTimestamps();
+    }
+
     public function getRouteKeyName(): string
     {
         return 'nickname';
     }
 
-    public function getFullNameAttribute(): string 
+    public function getFullNameAttribute(): string
     {
         return $this->first_name + ' ' + $this->last_name;
     }

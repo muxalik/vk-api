@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('gender', Gender::values())->default(Gender::NONE->value);
             $table->string('nickname')->unique();
             $table->string('status')->nullable();
-            $table->boolean('online');
+            $table->boolean('is_online');
             $table->enum('device', Device::values());
             $table->timestamp('last_online_at')->nullable();
             $table->timestamp('birthday')->nullable();
