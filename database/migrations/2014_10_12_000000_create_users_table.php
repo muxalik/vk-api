@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Device;
 use App\Enums\Gender;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,6 +20,10 @@ return new class extends Migration
             $table->string('last_name');
             $table->enum('gender', Gender::values())->default(Gender::NONE->value);
             $table->string('nickname')->unique();
+            $table->string('status')->nullable();
+            $table->boolean('online');
+            $table->enum('device', Device::values());
+            $table->timestamp('last_online_at')->nullable();
             $table->timestamp('birthday')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

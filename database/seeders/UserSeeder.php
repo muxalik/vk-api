@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Device;
 use App\Enums\Gender;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,11 +22,17 @@ class UserSeeder extends Seeder
         $users = [];
 
         for ($i = 0; $i < 10; $i++) {
+            $online = fake()->boolean();
+
             $users[] = [
                 'id' => $i + 1,
                 'first_name' => fake()->firstName(),
                 'last_name' => fake()->lastName(),
                 'gender' => Gender::randomValue(),
+                'status' => fake()->words(mt_rand(3, 10), true),
+                'online' => $online,
+                'device' => Device::randomValue(),
+                'last_online_at' => $online ? null : fake()->dateTime(),
                 'nickname' => fake()->userName(),
                 'birthday' => fake()->dateTime(),
                 'email' => fake()->unique()->safeEmail(),

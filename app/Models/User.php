@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Enums\Device;
 use App\Enums\FamilyMemberType;
 use App\Enums\Gender;
 use Illuminate\Database\Eloquent\Builder;
@@ -32,6 +33,10 @@ class User extends Authenticatable
         'last_name',
         'gender',
         'nickname',
+        'status',
+        'online',
+        'device',
+        'last_online_at',
         'birthday',
         'email',
         'city_id',
@@ -60,6 +65,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'gender' => Gender::class,
+        'online' => 'bool',
+        'device' => Device::class,
+        'last_online_at' => 'datetime',
+        'birthday' => 'datetime',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
